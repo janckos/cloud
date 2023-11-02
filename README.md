@@ -42,7 +42,7 @@ docker compose exec phpa php artisan migrate
 ## Pruebas del servicio, con ejemplos de respuesta del servicio.
 
 ### `GET` /api/tasks – obtener todas las tareas
-Execute the next curl command to validate the deploy of this endpoint.\
+Execute the next `curl` command to validate the deploy of this endpoint.\
 ```shell
 curl http://localhost:9000/public/api/tasks
 ```
@@ -52,7 +52,7 @@ The expected result should looks like:\
 ```
 
 ### `POST` /api/tasks – crear una nueva tarea
-Execute the next curl command to validate the deploy of this endpoint.
+Execute the next `curl` command to validate the deploy of this endpoint.
 ```shell
 curl -X POST \
 	'http://localhost:9000/public/api/tasks' \
@@ -72,34 +72,60 @@ The expected result should looks like:
 ```
 
 ### `GET` /api/tasks/{id} – obtener una tarea específica
-Execute the next curl command to validate the deploy of this endpoint.\
+Execute the next `curl` command to validate the deploy of this endpoint.
 ```shell
 curl http://localhost:9000/public/api/tasks/1 
-``\
+```
 The expected result should looks like:\
 ```shell
-{"data":{"id":1,"title":"New Record", "description": "This is a new record", "created_at":"20 23-10-18T01:03:13.0888882", "updated_at":"2023-10-18T01:03:13.008000Z"}}
-``
+{
+	"data":{
+		"id":1,
+		"title":"New Record",
+		"description": "This is a new record",
+		"created_at":"20 23-10-18T01:03:13.0888882",
+		"updated_at":"2023-10-18T01:03:13.008000Z"
+		}
+}
+```
 
 ### `PUT` /api/tasks/{id} – actualizar una tarea específica
-Execute the next curl command to validate the deploy of this endpoint.\
+Execute the next `curl` command to validate the deploy of this endpoint.
 ```shell
-curl -X PUT -H "Content-Type: application/json" -d ‘{"title":"First Record", "description":"First record has been updated"}’ http://localhost:9000/public/api/tasks/1 
-``\
-The expected result should looks like:\
-``
-{"message":"Task updated successfully!","data":{"id":1,"title":"First Record","description":"First record has been updated","created_at":"2023-10-18T01:03:13.000000Z","updated_at":"2023-10-18T16:12:29.000000Z"}}
-``
+curl -X PUT \
+	'http://localhost:9000/public/api/tasks/1' \
+	-H "Content-Type: application/json" \
+	-d ‘{
+		"title":"First Record",
+		"description":"First record has been updated"
+	}’  
+```
+The expected result should looks like:
+```shell
+{
+	"message":"Task updated successfully!",}
+	"data":{
+		"id":1,
+		"title":"First Record",
+		"description":"First record has been updated",
+		"created_at":"2023-10-18T01:03:13.000000Z",
+		"updated_at":"2023-10-18T16:12:29.000000Z"
+	}
+}
+```
 
 ### `DELETE` /api/tasks/{id} – eliminar una tarea específica
-Execute the next curl command to validate the deploy of this endpoint.\
+Execute the next `curl` command to validate the deploy of this endpoint.
 ```shell
-curl -X DELETE http://localhost:9000/public/api/tasks/4 
-``\
-The expected result should looks like:\
-``
-{"message": "Task deleted successfully!"}
-``
+curl -X DELETE
+	'http://localhost:9000/public/api/tasks/4'
+```
+The expected result should looks like:
+```shell
+{
+	"message": "Task deleted successfully!"
+}
+```
 
 *El presente contenido irá cambiando a lo largo del diplomado para incorporar lo aprendido.*
 ## Referencias al proyecto
