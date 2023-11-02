@@ -44,7 +44,7 @@ docker compose exec phpa php artisan migrate
 `GET` /api/tasks – obtener todas las tareas\
 Curl:\
 ``
-curl http://localhost:9000/public/api/tasks 
+curl http://localhost:9000/public/api/tasks \
 ``
 Response:\
 ``
@@ -54,7 +54,7 @@ Response:\
 `POST` /api/tasks – crear una nueva tarea\
 Curl:\
 ``
-curl -X POST -H "Content-Type: application/json" -d ‘{"title":"New Record", "description":"This is a new record"}’ http://localhost:9000/public/api/tasks
+curl -X POST -H "Content-Type: application/json" -d ‘{"title":"New Record", "description":"This is a new record"}’ http://localhost:9000/public/api/tasks\
 ``
 Response:\
 ``
@@ -64,7 +64,7 @@ Response:\
 `GET` /api/tasks/{id} – obtener una tarea específica\
 Curl:\
 ``
-curl http://localhost:9000/public/api/tasks/1 
+curl http://localhost:9000/public/api/tasks/1 \
 ``
 Response:\
 ``
@@ -84,7 +84,7 @@ Response\
 `DELETE` /api/tasks/{id} – eliminar una tarea específica\
 Curl:\
 ``
-curl -X DELETE http://localhost:9000/public/api/tasks/4 
+curl -X DELETE http://localhost:9000/public/api/tasks/4 \
 ``
 Response:\
 ``
