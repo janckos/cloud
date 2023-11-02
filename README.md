@@ -41,7 +41,7 @@ docker compose exec phpa php artisan migrate
 
 ## Pruebas del servicio, con ejemplos de respuesta del servicio.
 
-### `GET` /api/tasks – obtener todas las tareas\
+### `GET` /api/tasks – obtener todas las tareas
 Curl:\
 ``
 curl http://localhost:9000/public/api/tasks
@@ -51,7 +51,7 @@ Response:\
 {“data”:[]}
 ``
 
-`POST` /api/tasks – crear una nueva tarea\
+### `POST` /api/tasks – crear una nueva tarea
 Curl:\
 ``
 curl -X POST -H "Content-Type: application/json" -d ‘{"title":"New Record", "description":"This is a new record"}’ http://localhost:9000/public/api/tasks
@@ -61,7 +61,7 @@ Response:\
 {"message":"Task created successfully!", "data": {"title":"New Record", "description": "This i s a new record", "updated_at":"2023-10-18T01:03:13.000000","created_at":"2023-10-18T01:03: 13.000000Z", "id":1}}
 ``
 
-`GET` /api/tasks/{id} – obtener una tarea específica\
+### `GET` /api/tasks/{id} – obtener una tarea específica
 Curl:\
 ``
 curl http://localhost:9000/public/api/tasks/1 
@@ -71,7 +71,7 @@ Response:\
 {"data":{"id":1,"title":"New Record", "description": "This is a new record", "created_at":"20 23-10-18T01:03:13.0888882", "updated_at":"2023-10-18T01:03:13.008000Z"}}
 ``
 
-`PUT` /api/tasks/{id} – actualizar una tarea específica\
+### `PUT` /api/tasks/{id} – actualizar una tarea específica
 Curl:\
 ``
 curl -X PUT -H "Content-Type: application/json" -d ‘{"title":"First Record", "description":"First record has been updated"}’ http://localhost:9000/public/api/tasks/1 
@@ -81,7 +81,7 @@ Response\
 {"message":"Task updated successfully!","data":{"id":1,"title":"First Record","description":"First record has been updated","created_at":"2023-10-18T01:03:13.000000Z","updated_at":"2023-10-18T16:12:29.000000Z"}}
 ``
 
-`DELETE` /api/tasks/{id} – eliminar una tarea específica\
+### `DELETE` /api/tasks/{id} – eliminar una tarea específica
 Curl:\
 ``
 curl -X DELETE http://localhost:9000/public/api/tasks/4 
