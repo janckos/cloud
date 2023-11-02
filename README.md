@@ -43,44 +43,47 @@ docker compose exec phpa php artisan migrate
 
 ### `GET` /api/tasks – obtener todas las tareas
 Execute the next curl command to validate the deploy of this endpoint.\
-``
+```shell
 curl http://localhost:9000/public/api/tasks
-``\
+```
 The expected result should looks like:\
-``
+```shell
 {“data”:[]}
-``
+```
 
 ### `POST` /api/tasks – crear una nueva tarea
-Execute the next curl command to validate the deploy of this endpoint.\
-``
+Execute the next curl command to validate the deploy of this endpoint.
+```shell
 curl -X POST \
+	'http://localhost:9000/public/api/tasks' \
 	-H "Content-Type: application/json" \
-	-d ‘{"title":"New Record", "description":"This is a new record"}’ \
-	http://localhost:9000/public/api/tasks
-``\
-The expected result should looks like:\
-``
+	-d ‘{
+		"title":"New Record",
+		"description":"This is a new record"
+	}’
+```
+The expected result should looks like:
+```shell
 {
 	"message":"Task created successfully!",
 	"data": {"title":"New Record", "description": "This i s a new record",
 	"updated_at":"2023-10-18T01:03:13.000000","created_at":"2023-10-18T01:03: 13.000000Z", "id":1}
 }
-``
+```
 
 ### `GET` /api/tasks/{id} – obtener una tarea específica
 Execute the next curl command to validate the deploy of this endpoint.\
-``
+```shell
 curl http://localhost:9000/public/api/tasks/1 
 ``\
 The expected result should looks like:\
-``
+```shell
 {"data":{"id":1,"title":"New Record", "description": "This is a new record", "created_at":"20 23-10-18T01:03:13.0888882", "updated_at":"2023-10-18T01:03:13.008000Z"}}
 ``
 
 ### `PUT` /api/tasks/{id} – actualizar una tarea específica
 Execute the next curl command to validate the deploy of this endpoint.\
-``
+```shell
 curl -X PUT -H "Content-Type: application/json" -d ‘{"title":"First Record", "description":"First record has been updated"}’ http://localhost:9000/public/api/tasks/1 
 ``\
 The expected result should looks like:\
@@ -90,7 +93,7 @@ The expected result should looks like:\
 
 ### `DELETE` /api/tasks/{id} – eliminar una tarea específica
 Execute the next curl command to validate the deploy of this endpoint.\
-``
+```shell
 curl -X DELETE http://localhost:9000/public/api/tasks/4 
 ``\
 The expected result should looks like:\
@@ -108,5 +111,4 @@ Imágenes de Docker Hub:
 Herramientas:
 - [Compose](https://docs.docker.com/compose/)
 - [Dockerfile](https://docs.docker.com/engine/reference/builder/)
-
 
