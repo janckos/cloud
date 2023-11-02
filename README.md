@@ -48,7 +48,9 @@ curl http://localhost:9000/public/api/tasks
 ```
 The expected result should looks like:\
 ```shell
-{“data”:[]}
+{
+	“data”:[]
+}
 ```
 
 ### `POST` /api/tasks – crear una nueva tarea
