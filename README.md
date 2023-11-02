@@ -4,7 +4,7 @@ El proyecto pretende definir las bases de configuración y despliegue de aplicac
 | Directorio/Archivo  | Descripción|
 | ------------- |:-------------:|
 | [docker-compose.yaml](https://github.com/janckos/cloud/blob/master/docker-compose.yaml)      | Contiene las instrucciones para la configuración de servicios/imágenes.    |
-| [data/](https://github.com/janckos/cloud/tree/master/data)      |Volumen: Contiene la data de postgres     |
+| [data/](https://github.com/janckos/cloud/tree/master/data)      |Volumen: Contiene la data de postgres.     |
 | [Dockerfile](https://github.com/janckos/cloud/blob/master/Dockerfile)   | Contiene las instrucciones para configurar un contenedor con php/apache y librerías necesarias para una aplicación/laravel.     |
 | [src/](https://github.com/janckos/cloud/tree/master/src)      | Volumen: Contiene el código fuente de la aplicación/laravel y está vinculado a la ruta de despliegue de aplicaciones de apache.     |
 ## Guía de despliegue
