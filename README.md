@@ -45,7 +45,7 @@ docker compose exec phpa php artisan migrate
 Curl:\
 ``
 curl http://localhost:9000/public/api/tasks
-``
+``\
 Response:\
 ``
 {“data”:[]}
@@ -75,8 +75,8 @@ Response:\
 Curl:\
 ``
 curl -X PUT -H "Content-Type: application/json" -d ‘{"title":"First Record", "description":"First record has been updated"}’ http://localhost:9000/public/api/tasks/1 
-``
-\Response\
+``\
+Response\
 ``
 {"message":"Task updated successfully!","data":{"id":1,"title":"First Record","description":"First record has been updated","created_at":"2023-10-18T01:03:13.000000Z","updated_at":"2023-10-18T16:12:29.000000Z"}}
 ``
@@ -85,8 +85,8 @@ curl -X PUT -H "Content-Type: application/json" -d ‘{"title":"First Record", "
 Curl:\
 ``
 curl -X DELETE http://localhost:9000/public/api/tasks/4 
-``
-\Response:\
+``\
+Response:\
 ``
 {"message": "Task deleted successfully!"}
 ``
