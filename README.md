@@ -8,33 +8,33 @@ El proyecto pretende definir las bases de configuración y despliegue de aplicac
 | /Dockerfile   | Contiene las instrucciones para configurar un contenedor con php/apache y librerías necesarias para una aplicación/laravel.     |
 | /src      | Volumen: Contiene el código fuente de la aplicación/laravel y está vinculado a la ruta de despliegue de aplicaciones de apache.     |
 ## Guía de despliegue
-Clonar el repositorio en un directorio local:
+Clonar el repositorio en un directorio local:\
 ``
 git clone https://github.com/janckos/cloud.git
 ``
 
-Dentro del repositorio local, construir la imagen:
+Dentro del repositorio local, construir la imagen:\
 ``
 docker compose build
 ``
 
-Ejecutar los servicios en modo desatendido:
+Ejecutar los servicios en modo desatendido:\
 ``
 docker compose up -d
 ``
 
 ## Instrucciones para ejecutar
-Instalar dependencias del la aplicación dentro del contenedor vía Composer:
+Instalar dependencias del la aplicación dentro del contenedor vía Composer:\
 ``
 docker compose exec phpa composer update
 ``
 
-Generar la llave de la aplicación/laravel:
+Generar la llave de la aplicación/laravel:\
 ``
 docker compose exec phpa php artisan key:generate
 ``
 
-Ejecutar las migraciones en la base de datos:
+Ejecutar las migraciones en la base de datos:\
 ``
 docker compose exec phpa php artisan migrate
 ``
