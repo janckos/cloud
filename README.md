@@ -41,7 +41,7 @@ docker compose exec phpa php artisan migrate
 
 ## Pruebas del servicio, con ejemplos de respuesta del servicio.
 
-`GET` /api/tasks – obtener todas las tareas\
+### `GET` /api/tasks – obtener todas las tareas\
 Curl:\
 ``
 curl http://localhost:9000/public/api/tasks
