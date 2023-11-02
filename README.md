@@ -24,29 +24,29 @@ docker compose up -d
 ``
 
 ## Instrucciones para ejecutar
-Instalar dependencias del la aplicación dentro del contenedor vía Composer:\
-``
+Instalar dependencias del la aplicación dentro del contenedor vía Composer:
+```shell
 docker compose exec phpa composer update
-``
+```
 
-Generar la llave de la aplicación/laravel:\
-``
+Generar la llave de la aplicación/laravel:
+```shell
 docker compose exec phpa php artisan key:generate
-``
+```
 
-Ejecutar las migraciones en la base de datos:\
-``
+Ejecutar las migraciones en la base de datos:
+```shell
 docker compose exec phpa php artisan migrate
-``
+```
 
 ## Pruebas del servicio, con ejemplos de respuesta del servicio.
 
 ### `GET` /api/tasks – obtener todas las tareas
-Execute the next `curl` command to validate the deploy of this endpoint.\
+Execute the next `curl` command to validate the deploy of this endpoint.
 ```shell
 curl http://localhost:9000/public/api/tasks
 ```
-The expected result should looks like:\
+The expected result should looks like:
 ```shell
 {
 	“data”:[]
@@ -78,7 +78,7 @@ Execute the next `curl` command to validate the deploy of this endpoint.
 ```shell
 curl http://localhost:9000/public/api/tasks/1 
 ```
-The expected result should looks like:\
+The expected result should looks like:
 ```shell
 {
 	"data":{
