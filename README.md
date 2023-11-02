@@ -1,35 +1,103 @@
 ## Descripción del proyecto
 El proyecto pretende definir las bases de configuración y despliegue de aplicaciones web que utilizan Laravel como framework de desarrollo y una base de datos relacional de postgreSQL.
+## Estructura del repositorio
+| Directorio/Archivo  | Descripción|
+| ------------- |:-------------:|
+| /docker-compose.yaml      | Contiene las instrucciones para la configuración de servicios/imágenes.    |
+| /data      |Volumen: Contiene la data de postgres     |
+| /Dockerfile   | Contiene las instrucciones para configurar un contenedor con php/apache y librerías necesarias para una aplicación/laravel.     |
+| /src      | Volumen: Contiene el código fuente de la aplicación/laravel y está vinculado a la ruta de despliegue de aplicaciones de apache.     |
 ## Guía de despliegue
 Clonar el repositorio en un directorio local:
+``
 git clone https://github.com/janckos/cloud.git
+``
 
 Dentro del repositorio local, construir la imagen:
+``
 docker compose build
+``
 
 Ejecutar los servicios en modo desatendido:
+``
 docker compose up -d
+``
 
+## Instrucciones para ejecutar
 Instalar dependencias del la aplicación dentro del contenedor vía Composer:
+``
 docker compose exec phpa composer update
+``
 
 Generar la llave de la aplicación/laravel:
+``
 docker compose exec phpa php artisan key:generate
+``
 
+Ejecutar las migraciones en la base de datos:
+``
+docker compose exec phpa php artisan migrate
+``
 
-
-
-(Colocar solo el título, esto se irá rellenando a lo largo del diplomado).
-## Instrucciones para ejecutar
-- Configurar en el servidor web Apache un virtual host denominado www.diplo.test
-- Mediante un navegador web ingresar al siguiente enlace: www.diplo.test
 ## Pruebas del servicio, con ejemplos de respuesta del servicio.
-Una vez que ingrese al enlace proporcionado, se mostrará la siguiente página:
 
-<img src="firstrun.jpg" />
+`GET` /api/tasks – obtener todas las tareas
+Curl:
+``
+curl http://localhost:9000/public/api/tasks 
+``
+Response:
+``
+{“data”:[]}
+``
 
-El contenido de esta aplicación irá cambiando a lo largo del diplomado para incorporar lo aprendido.
+`POST` /api/tasks – crear una nueva tarea
+Curl:
+``
+curl -X POST -H "Content-Type: application/json" -d ‘{"title":"New Record", "description":"This is a new record"}’ http://localhost:9000/public/api/tasks
+``
+Response:
+``
+{"message":"Task created successfully!", "data": {"title":"New Record", "description": "This i s a new record", "updated_at":"2023-10-18T01:03:13.000000","created_at":"2023-10-18T01:03: 13.000000Z", "id":1}}
+``
+
+`GET` /api/tasks/{id} – obtener una tarea específica
+Curl:
+``
+curl http://localhost:9000/public/api/tasks/1 
+``
+Response:
+``
+{"data":{"id":1,"title":"New Record", "description": "This is a new record", "created_at":"20 23-10-18T01:03:13.0888882", "updated_at":"2023-10-18T01:03:13.008000Z"}}
+``
+
+`PUT` /api/tasks/{id} – actualizar una tarea específica
+Curl:
+``
+curl -X PUT -H "Content-Type: application/json" -d ‘{"title":"First Record", "description":"First record has been updated"}’ http://localhost:9000/public/api/tasks/1 
+``
+Response
+``
+{"message":"Task updated successfully!","data":{"id":1,"title":"First Record","description":"First record has been updated","created_at":"2023-10-18T01:03:13.000000Z","updated_at":"2023-10-18T16:12:29.000000Z"}}
+``
+
+`DELETE` /api/tasks/{id} – eliminar una tarea específica
+Curl:
+``
+curl -X DELETE http://localhost:9000/public/api/tasks/4 
+``
+Response:
+``
+{"message": "Task deleted successfully!"}
+``
+
+*El presente contenido irá cambiando a lo largo del diplomado para incorporar lo aprendido.*
 ## Referencias al proyecto
-A este momento el repositorio cuenta con el código necesario para ejecutar un proyecto base de Laravel, sin embargo, una vez aprendido los contenidos del Modulo III. Contenedores (en curso), se utilizarán las siguientes imágenes:
-- [bitnami/laravel](https://hub.docker.com/r/bitnami/laravel/) Bitnami Laravel Docker Image by VMware 
-- [postgres](https://hub.docker.com/_/postgres) Docker Official Image
+Imágenes de Docker Hub:
+- [php:8.1.0-apache](https://hub.docker.com/layers/library/php/8.1.0-apache/images/sha256-0ebdfb1aff16a9ccb4b4f0613023cad6f5a237a8ed333a455502d9f78257125c?context=explore)
+- [postgres](https://hub.docker.com/_/postgres)
+- [dpage/pgadmin4](https://hub.docker.com/r/dpage/pgadmin4)
+
+Herramientas:
+- [Compose](https://docs.docker.com/compose/)
+- [Dockerfile](https://docs.docker.com/engine/reference/builder/)
